@@ -1,7 +1,6 @@
-
-import axios from 'axios';
-
+import axios from "axios";
 const instance = axios.create({
-  baseURL: 'http://127.0.0.1:5001/project-94b04/us-central1/api', 
+  baseURL: "http://127.0.0.1:10000",
+  // baseURL: "http://127.0.0.1:5001/clone-54cab/us-central1/api",
 });
 export default instance;
