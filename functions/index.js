@@ -1,52 +1,45 @@
-const functions = require("firebase-functions");
-
-// const express = require("express");
-// const cors = require("cors");
-// const stripe = require("stripe")(
-//   "sk_test_51MLSRBHDG20hmXZIPCteXdwKKrJTnIkQvWGHWuNbk0bykVqM4VLPpA0h3G2ZwGQLMi4DNifGQAwclPhVatP4wadv00q8i9rnj7"
-// );
+require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
-const stripe = require("stripe")(
-  "sk_test_51OOlLOLkmcHudYaF4Nonocb3XBwXTdwRKtvHrkQBziWtao0DZ63hF5Gme4sjptQ5fwYVWCsWWfZohF5k5Kx9Zv5J001a9Yp9k0"
-);
+const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY); // secret key
 
-
-
-// - App config
 const app = express();
-app.listen(2021, (err) => {
-  if (err) console.log("error on connection ", err);
-  else {
-    console.log("Server is connected @ 2021");
-  }
-});
-// - Middlewears
-app.use(cors({ origin: true }));
+
+app.use(cors());
 app.use(express.json());
-
-app.get("/", (request, response) => response.status(200).send("Hello world"));
-
+app.get("/", (request, response) => response.status(200).send("hello world"));
 app.post("/payments/create", async (request, response) => {
   const total = request.query.total;
   try {
-    console.log("Payment Request Recieved for this amount >>>", total);
-
+    console.log("payment Request Recived for this amount>>>", total);
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: total, // - Subunits of the currency
-      currency: "usd",
+      amount: parseInt(total),
+      currency: "USD",
     });
-
-    // Ok - Created
+    //ok-created
     response.status(201).send({
       clientSecret: paymentIntent.client_secret,
     });
   } catch (error) {
-    console.log("error", error);
+    response.status(500).send("server error");
+    console.log(error);
+  }
+});
+app.listen(10000, (err) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log("listenig 10000");
   }
 });
 
-// // - Listen Command
 
-// exports.api = functions.https.onRequest(app);
+
+
+
+
+
+
+
+// sk_test_51OOlLOLkmcHudYaF4Nonocb3XBwXTdwRKtvHrkQBziWtao0DZ63hF5Gme4sjptQ5fwYVWCsWWfZohF5k5Kx9Zv5J001a9Yp9k0
