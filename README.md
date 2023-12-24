@@ -68,3 +68,37 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+
+
+firebase projects:list
+
+firebase use --add
+backend start
+firebase emulators:start
+
+firebase emulators:start --project project-94b04
+
+firebase deploy --only functions --project project-94b04
+
+firebase deploy --only functions  => this one is backend
+
+firebase deploy --only hosting  =>this one is frontend
+
+ // "predeploy": [
+      //   "npm --prefix \"$RESOURCE_DIR\" run lint"
+
+      // ] from firebase.json file
+
+
+
+// sk_test_51OOlLOLkmcHudYaF4Nonocb3XBwXTdwRKtvHrkQBziWtao0DZ63hF5Gme4sjptQ5fwYVWCsWWfZohF5k5Kx9Zv5J001a9Yp9k0
+
+
+// Hide test key
+
+//pk_test_51OOlLOLkmcHudYaFKvd13UcPJf1iEaSTuio7MK5KwgoAwjFw9UvkLLlwx2afveNpJNJqBGRjqMfYD9mRqEr2f0Ae0005m2sg25
+
+
